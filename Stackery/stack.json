@@ -1,0 +1,93 @@
+{
+  "nodes": [
+    {
+      "id": "9028a579",
+      "type": "errors",
+      "x": 150,
+      "y": 335,
+      "wires": [
+        [
+          "6863d153"
+        ]
+      ]
+    },
+    {
+      "id": "6863d153",
+      "type": "function",
+      "x": 420,
+      "y": 335,
+      "name": "Log Errors",
+      "outputs": 1,
+      "memorySize": 3008,
+      "timeout": 30,
+      "runtime": "nodejs8",
+      "location": "inline",
+      "envVars": {},
+      "entryPoint": "",
+      "wires": [
+        []
+      ]
+    },
+    {
+      "id": "f2ece13f",
+      "type": "function",
+      "x": 385,
+      "y": 180,
+      "width": 100,
+      "height": 30,
+      "name": "Lambda Function",
+      "outputs": 1,
+      "memorySize": 3008,
+      "timeout": 30,
+      "runtime": "nodejs8",
+      "location": "inline",
+      "envVars": {},
+      "entryPoint": "",
+      "wires": [
+        [
+          "629af2a6"
+        ]
+      ]
+    },
+    {
+      "id": "629af2a6",
+      "type": "database",
+      "x": 615,
+      "y": 180,
+      "width": 100,
+      "height": 30,
+      "name": "RDS Database",
+      "engine": "mariadb",
+      "version": "10.1",
+      "storageSize": 5,
+      "backupRetentionPeriod": 0,
+      "instanceType": "db.t2.micro",
+      "rootPassword": "djfkldsa;gljhadsjkfdslmkfnsdjklghs",
+      "failover": false,
+      "skipNameResolution": false
+    },
+    {
+      "id": "f066c7b3",
+      "type": "http",
+      "x": 145,
+      "y": 170,
+      "width": 240,
+      "height": 130,
+      "name": "API Gateway"
+    },
+    {
+      "id": "5f0e26b1",
+      "type": "restApiEndpoint",
+      "x": 140,
+      "y": 180,
+      "width": 100,
+      "height": 30,
+      "path": "/",
+      "wires": [
+        [
+          "f2ece13f"
+        ]
+      ]
+    }
+  ]
+}
